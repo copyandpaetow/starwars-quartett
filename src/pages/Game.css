@@ -1,0 +1,33 @@
+@keyframes shake {
+	25% {
+		transform: translate(-25px);
+	}
+	50% {
+		transform: translate(25px);
+	}
+	75% {
+		transform: translate(-25px);
+	}
+}
+
+@keyframes zoom {
+	25% {
+		transform: scale(1.2);
+	}
+	50% {
+		transform: scale(1);
+	}
+	75% {
+		transform: scale(1.2);
+	}
+}
+
+.shake {
+	animation: shake 250ms 200ms ease 2;
+	color: red;
+}
+
+.zoom {
+	animation: zoom 300ms 200ms ease 2;
+	color: green;
+}
