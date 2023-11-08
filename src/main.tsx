@@ -3,7 +3,7 @@ import App from "./pages/App.tsx";
 import "./index.css";
 
 import {
-	createBrowserRouter,
+	createHashRouter,
 	createRoutesFromElements,
 	Route,
 	RouterProvider,
@@ -42,7 +42,7 @@ const gameRoutes: GameRoutes = [
 	},
 ];
 
-const router = createBrowserRouter(
+const router = createHashRouter(
 	createRoutesFromElements(
 		<Route path="/">
 			<Route index element={<App gameRoutes={gameRoutes} />} />
