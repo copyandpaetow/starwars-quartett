@@ -1,4 +1,4 @@
-import { useEffect, useReducer } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { getFromCacheOrFetch } from "../data/cache";
 import { GameRoutes } from "../data/schema";
@@ -11,7 +11,7 @@ type AppProps = {
 
 export const App = (props: AppProps) => {
 	const { gameRoutes } = props;
-	const [isLoading, startLoading] = useReducer(() => true, false);
+	const [isLoading, setLoading] = useState(gameRoutes.map(() => false));
 
 	useEffect(() => {
 		const asyncFn = async () => {
@@ -23,6 +23,12 @@ export const App = (props: AppProps) => {
 		};
 		asyncFn();
 	}, [gameRoutes]);
+
+	const handleLoading = (index: number) => {
+		const localLoading = [...isLoading];
+		localLoading[index] = true;
+		setLoading(localLoading);
+	};
 
 	return (
 		<main className="list">
@@ -36,10 +42,15 @@ export const App = (props: AppProps) => {
 			<p>select game category: </p>
 
 			<nav className="list">
-				{gameRoutes.map((route) => (
-					<Link to={`/${route.type}`} onClick={startLoading} key={route.type} className="border">
-						{isLoading ? route.loadingText : route.type}
-						{isLoading ? <span className="loading"></span> : null}
+				{gameRoutes.map((route, index) => (
+					<Link
+						to={`/${route.type}`}
+						onClick={() => handleLoading(index)}
+						key={route.type}
+						className="border"
+					>
+						{isLoading[index] ? route.loadingText : route.type}
+						{isLoading[index] ? <span className="loading"></span> : null}
 					</Link>
 				))}
 			</nav>

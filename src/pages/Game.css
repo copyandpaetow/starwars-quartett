@@ -15,6 +15,11 @@
 		width: fit-content;
 	}
 
+	/*fit content renders weird initially on iOS/Safari*/
+	legend {
+		min-width: 200px;
+	}
+
 	/*this is needed because non-waapi animations dont have an endDelay*/
 	@keyframes shake {
 		2% {
