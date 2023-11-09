@@ -6,12 +6,13 @@
 	fieldset {
 		display: grid;
 		gap: var(--space--1);
-		width: max-content;
 		justify-self: center;
 	}
 
+	fieldset,
+	legend,
 	fieldset > div {
-		width: max-content;
+		width: fit-content;
 	}
 
 	/*this is needed because non-waapi animations dont have an endDelay*/
