@@ -1,33 +1,65 @@
-@keyframes shake {
-	25% {
-		transform: translate(-25px);
+@layer components {
+	main {
+		gap: var(--gutter);
 	}
-	50% {
-		transform: translate(25px);
-	}
-	75% {
-		transform: translate(-25px);
-	}
-}
 
-@keyframes zoom {
-	25% {
-		transform: scale(1.2);
+	fieldset {
+		display: grid;
+		gap: var(--space--1);
+		width: max-content;
+		justify-self: center;
 	}
-	50% {
-		transform: scale(1);
-	}
-	75% {
-		transform: scale(1.2);
-	}
-}
 
-.shake {
-	animation: shake 250ms 200ms ease 2;
-	color: red;
-}
+	fieldset > div {
+		width: max-content;
+	}
 
-.zoom {
-	animation: zoom 300ms 200ms ease 2;
-	color: green;
+	/*this is needed because non-waapi animations dont have an endDelay*/
+	@keyframes shake {
+		2% {
+			transform: translate(-25px);
+		}
+		4% {
+			transform: translate(25px);
+		}
+		6% {
+			transform: translate(-25px);
+		}
+		7% {
+			transform: translate(0px);
+		}
+	}
+
+	@keyframes zoom {
+		2% {
+			transform: scale(1.2);
+		}
+		4% {
+			transform: scale(1);
+		}
+		6% {
+			transform: scale(1.2);
+		}
+		7% {
+			transform: scale(1);
+		}
+	}
+
+	.shake {
+		animation: shake 3000ms 500ms ease;
+		color: red;
+	}
+
+	.shake.border {
+		border-color: red;
+	}
+
+	.zoom {
+		animation: zoom 3000ms 500ms ease;
+		color: green;
+	}
+
+	.zoom.border {
+		border-color: green;
+	}
 }

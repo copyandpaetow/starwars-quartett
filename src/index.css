@@ -1,69 +1,49 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+@layer theme, layout, components;
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+@import "./styles/vars.css" layer(theme);
+@import "./styles/resets.css" layer(theme);
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
+@layer layout {
+	/*adapted from https://projects.verou.me/css3patterns/#starry-night*/
+	html {
+		background-color: var(--grey-100);
+		background-image: radial-gradient(var(--grey-10), var(--grey-70) 2px, transparent 4px),
+			radial-gradient(var(--grey-10), var(--grey-80) 1px, transparent 3px),
+			radial-gradient(var(--grey-10), var(--grey-90) 2px, transparent 4px),
+			radial-gradient(var(--grey-60), var(--grey-90) 2px, transparent 3px);
+		background-size: 550px 550px, 350px 350px, 250px 250px, 150px 150px;
+		background-position: 0 0, 40px 60px, 130px 270px, 70px 100px;
+	}
 
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
+	body {
+		max-width: 50em;
+		margin-inline: auto;
+	}
 
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
-}
+	:where(p, a, li, button, legend, label) {
+		font-size: var(--font-1);
+	}
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+	h1 {
+		padding: var(--space-1);
+		font-size: var(--font-4);
+		line-height: 1.1;
+	}
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
+	h2,
+	header > p {
+		font-size: var(--font-3);
+		line-height: 1.1;
+	}
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+	h3 {
+		line-height: 1.1;
+		font-size: var(--font-2);
+	}
+
+	.list {
+		display: grid;
+		grid-auto-flow: row;
+		gap: var(--space-1);
+	}
 }

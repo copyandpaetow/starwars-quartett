@@ -1,0 +1,72 @@
+*,
+::after,
+::before {
+	box-sizing: border-box;
+}
+
+html {
+	line-height: 1.5;
+	font-family: var(--font-base);
+}
+
+html:focus-visible {
+	scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	html:focus-within {
+		scroll-behavior: auto;
+	}
+}
+
+#root,
+body {
+	min-height: 100vh;
+}
+
+:where(body, h1, h2, h3, h4, p, figure, blockquote, dl, dd, menu, ul, li) {
+	margin: 0;
+	padding: 0;
+}
+
+:where(h1, h2, h3, button, input, label) {
+	line-height: 1.1;
+}
+
+h1,
+h2,
+h3 {
+	text-wrap: balance;
+}
+
+input,
+button,
+textarea,
+select {
+	font: inherit;
+}
+
+ul,
+ol {
+	list-style: none;
+}
+
+img,
+picture {
+	max-width: 100%;
+	display: block;
+}
+
+input:focus-visible {
+	outline: 2px solid transparent;
+	border-color: var(--blue);
+}
+
+button:focus:not(:focus-visible) {
+	outline-color: transparent;
+}
+
+button:focus-visible {
+	outline: 2px solid transparent;
+	box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--blue);
+}

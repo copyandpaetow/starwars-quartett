@@ -47,4 +47,9 @@ type Results<Type> = {
 
 export type AllResults = Results<Vehicles> | Results<Spaceships>;
 
-export type GameRoutes = { type: string; questions: string[] }[];
+export type Question = {
+	type: keyof Vehicles | keyof Spaceships;
+	predicate: "more" | "less";
+};
+
+export type GameRoutes = { type: string; questions: Question[]; loadingText: string }[];

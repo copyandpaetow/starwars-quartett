@@ -10,26 +10,39 @@ type AppProps = {
 };
 
 export const App = (props: AppProps) => {
+	const { gameRoutes } = props;
 	const [isLoading, startLoading] = useReducer(() => true, false);
 
 	useEffect(() => {
 		const asyncFn = async () => {
 			// when everything is loaded we already start with some prefetching
-			for await (const entry of props.gameRoutes) {
+			for await (const entry of gameRoutes) {
 				await whenBrowserHasTime();
 				getFromCacheOrFetch(`https://swapi.dev/api/${entry.type}/`);
 			}
 		};
 		asyncFn();
-	}, [props.gameRoutes]);
+	}, [gameRoutes]);
 
 	return (
-		<>
-			<Link to="/starships" onClick={startLoading}>
-				{isLoading ? "loading" : "starships"}
-			</Link>
-		</>
+		<main className="list">
+			<header>
+				<h1 className="border">
+					STAR <br /> WARS
+				</h1>
+				<p>Quartett edition</p>
+			</header>
+
+			<p>select game category: </p>
+
+			<nav className="list">
+				{gameRoutes.map((route) => (
+					<Link to={`/${route.type}`} onClick={startLoading} key={route.type} className="border">
+						{isLoading ? route.loadingText : route.type}
+						{isLoading ? <span className="loading"></span> : null}
+					</Link>
+				))}
+			</nav>
+		</main>
 	);
 };
-
-export default App;

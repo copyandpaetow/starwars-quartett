@@ -1,0 +1,38 @@
+:root {
+	/*font sizes  => https://utopia.fyi/*/
+	--font--2: clamp(0.7813rem, 0.7747rem + 0.0326vw, 0.8rem);
+	--font--1: clamp(0.9375rem, 0.9158rem + 0.1087vw, 1rem);
+	--font-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+	--font-1: clamp(1.35rem, 1.2761rem + 0.3696vw, 1.5625rem);
+	--font-2: clamp(1.62rem, 1.5041rem + 0.5793vw, 1.9531rem);
+	--font-3: clamp(1.9438rem, 1.7707rem + 0.8652vw, 2.4413rem);
+	--font-4: clamp(4.5rem, 4.3261rem + 0.8696vw, 5rem);
+	--font-base: Inter, Segoe UI, Roboto, Helvetica Neue, Arial, sans-serif;
+
+	/*spacings*/
+	--space--3: clamp(0.3125rem, 0.3125rem + 0vw, 0.3125rem);
+	--space--2: clamp(0.5625rem, 0.5408rem + 0.1087vw, 0.625rem);
+	--space--1: clamp(0.875rem, 0.8533rem + 0.1087vw, 0.9375rem);
+	--space-0: clamp(1.125rem, 1.0815rem + 0.2174vw, 1.25rem);
+	--space-1: clamp(1.6875rem, 1.6223rem + 0.3261vw, 1.875rem);
+	--space-2: clamp(2.25rem, 2.163rem + 0.4348vw, 2.5rem);
+	--space-3: clamp(3.375rem, 3.2446rem + 0.6522vw, 3.75rem);
+	--space-4: clamp(4.5rem, 4.3261rem + 0.8696vw, 5rem);
+	--space-5: clamp(6.75rem, 6.4891rem + 1.3043vw, 7.5rem);
+	--gutter: clamp(1.125rem, 0.6467rem + 2.3913vw, 2.5rem);
+
+	/*colors*/
+	--grey-10: hsl(210, 17%, 98%);
+	--grey-20: hsl(210, 17%, 95%);
+	--grey-30: hsl(210, 16%, 93%);
+	--grey-40: hsl(210, 14%, 89%);
+	--grey-50: hsl(210, 14%, 83%);
+	--grey-60: hsl(210, 11%, 71%);
+	--grey-70: hsl(210, 7%, 56%);
+	--grey-80: hsl(210, 9%, 31%);
+	--grey-85: hsl(210, 10%, 23%);
+	--grey-90: hsl(210, 11%, 15%);
+	--grey-100: hsl(210, 11%, 5%);
+
+	--yellow: hsl(54, 100%, 56%);
+}

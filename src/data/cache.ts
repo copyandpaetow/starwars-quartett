@@ -9,7 +9,6 @@ export const getFromCacheOrFetch = async (URL: string) => {
 	}
 
 	console.log("cache miss");
-
 	const response = await fetch(URL);
 	const result = (await response.json()) as AllResults;
 	cache.set(URL, result);

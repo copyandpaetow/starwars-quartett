@@ -1,5 +1,5 @@
 import ReactDOM from "react-dom/client";
-import App from "./pages/App.tsx";
+import { App } from "./pages/App.tsx";
 import "./index.css";
 
 import {
@@ -12,18 +12,14 @@ import { Game } from "./pages/Game.tsx";
 import { Error } from "./pages/Error.tsx";
 import { getFromCacheOrFetch } from "./data/cache.ts";
 import { GameRoutes } from "./data/schema.ts";
+import React from "react";
 
 /*
 todos:
 
-!required
-- handle uneven card amounts
-- within the question define if less or more should win, 
-- after a certain amount of turns we should declare a winner, otherwise there could be an endless game
-- add minimal stylings
-- nested prefetching
-
 *nice to have
+- nested prefetching
+- handle uneven card amounts
 - maybe add the option for a short match? 
 - improve the typings
 - handle error management for the network
@@ -35,10 +31,28 @@ todos:
 
 */
 
+//our question selection
+//this makes it less data driven though but we cant compare all values and need to preselect
 const gameRoutes: GameRoutes = [
 	{
 		type: "starships",
-		questions: ["cargo_capacity", "cost_in_credits", "hyperdrive_rating", "passengers"],
+		questions: [
+			{ type: "cargo_capacity", predicate: "more" },
+			{ type: "cost_in_credits", predicate: "more" },
+			{ type: "hyperdrive_rating", predicate: "more" },
+			{ type: "passengers", predicate: "more" },
+		],
+		loadingText: "getting in formation",
+	},
+	{
+		type: "vehicles",
+		questions: [
+			{ type: "length", predicate: "more" },
+			{ type: "cost_in_credits", predicate: "more" },
+			{ type: "max_atmosphering_speed", predicate: "more" },
+			{ type: "passengers", predicate: "more" },
+		],
+		loadingText: "starting the engines",
 	},
 ];
 
@@ -59,9 +73,8 @@ const router = createHashRouter(
 	)
 );
 
-//causes rerenderings in dev mode
 ReactDOM.createRoot(document.getElementById("root")!).render(
-	//<React.StrictMode>
-	<RouterProvider router={router} />
-	//</React.StrictMode>
+	<React.StrictMode>
+		<RouterProvider router={router} />
+	</React.StrictMode>
 );
